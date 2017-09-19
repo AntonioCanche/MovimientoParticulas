@@ -50,7 +50,7 @@ class particula{
  particula (){
   x= random(500);
   y= random (500);
-  v= random(10);
+  v= 10;
   a= random (TWO_PI);
   t= random(1,30);
   c= color (random(255),random(255),random(255));
@@ -60,7 +60,7 @@ class particula{
  particula(float x_, float y_){
     x= x_;
   y= y_;
-  v= random(10);
+  v= 10;
   a= random (TWO_PI);
   t= random(1,30);
   c= color (random(255),random(255),random(255));
@@ -80,13 +80,18 @@ class particula{
   void movimiento(){
     
    
-  y+=a;
-  x+=a;
+  y+= v*sin(a);
+  x+= v*cos(a);
   
-    if (x>500)
+    if (x>500){
+ v= -v;
+ a= -a;
+  
+  }
+   if (x<=0){
+   v=-v;
   a= -a;
-   if (x<=0)
-  a= -a;
+  }
    if (y>500)
   a= -a;
    if (y<=0)
